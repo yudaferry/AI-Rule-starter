@@ -1,0 +1,150 @@
+---
+description: General knowledge renewal protocol for any project with memory-bank system
+globs: "**/memory-bank/*.md"
+alwaysApply: true
+---
+# Universal Knowledge Renewal Protocol
+
+## Purpose
+This file defines a standardized, project-agnostic process for comprehensively renewing project knowledge. This protocol can be applied to any project using a memory-bank system and is executed when explicitly requested by the user or when preparing for session transitions.
+
+**Key goals** for knowledge renewal:
+1.  **Ensure Seamless Handoff:** Guarantee the AI understands the project's current state, history, goals, progress, and obstacles from the ground up, without requiring user re-explanation in subsequent sessions.
+2.  **Optimize Knowledge Base:** Compact and remove redundant or outdated information to maintain a lean and accurate memory bank.
+3.  **Preserve Critical Context:** Safeguard all essential project information necessary for continuous, effective development.
+4.  **Maintain Consistency:** Ensure all knowledge files are consistent with each other and with the actual codebase.
+
+---
+
+## Steps to Renew Knowledge
+
+### 1. **Comprehensive Review and Update of Core Memory Bank Files**
+- **Action:** Read and thoroughly update all available memory bank files to reflect the project's absolute current state, recent changes, and all relevant context. This ensures the memory bank remains the single source of truth.
+- **Common memory bank files include (adapt to project structure):**
+  - `projectbrief.md` or similar (Project purpose, scope, goals)
+  - `productContext.md` or similar (Problem, solution, user experience)
+  - `systemPatterns.md` or similar (Architecture, design patterns, component relationships)
+  - `techContext.md` or similar (Technologies, development setup, constraints)
+  - `activeContext.md` or similar (Current work focus, recent accomplishments, next actions)
+  - `progress.md` or similar (Project phases, task status, what works, known issues)
+  - `sessionStarter.md` (If exists - Quick overview for new sessions)
+  - Any project-specific knowledge files
+
+### 2. **Knowledge Compaction and Redundancy Removal**
+- **Action:** Systematically review all memory bank files for efficiency and accuracy.
+  - **Remove:**
+    - Redundant entries (e.g., duplicate notes, repeated explanations).
+    - Outdated context (e.g., resolved obstacles, deprecated code sections, completed temporary notes).
+    - Information that is no longer relevant to the project's current direction.
+  - **Compact:**
+    - Merge similar notes or discussions into concise, consolidated entries.
+    - Summarize verbose logs, chat history, or detailed explanations into actionable insights or key decisions.
+    - Convert lengthy explanations into bullet points where appropriate.
+  - **Document Changes:** Keep track of significant removals or compactions to report in the summary.
+
+### 3. **Validation Against Codebase**
+- **Action:** Cross-check the documented knowledge with the actual codebase.
+  - **Key files to validate (adapt to project type):** 
+    - Configuration files (`package.json`, `tsconfig.json`, `pom.xml`, `requirements.txt`, etc.)
+    - Source code directories and structure
+    - Deployment configurations
+    - Build scripts and automation
+    - Any new files added since last knowledge renewal
+  - **Check for recent changes:** 
+    - Dependencies added/removed/updated
+    - New source files or directories
+    - Configuration updates
+    - Deployment changes
+    - New features or functionality
+    - Changes in project structure
+  - If discrepancies are found between documentation and code, or if the code reveals new patterns/information not yet documented, update the relevant memory bank files.
+  - If a discrepancy cannot be immediately resolved or requires user input, proceed to Step 5.
+
+### 4. **Preservation of Critical Context**
+- **Mandate:** **NEVER DELETE** the following types of information, as they are crucial for future sessions to understand the project from the ground up:
+  - Project goals, vision, and core problem statement.
+  - Fundamental architectural decisions and system patterns.
+  - Unresolved `question.md` items (until explicitly answered and integrated).
+  - Active TODOs, known issues, or identified blockers.
+  - Key learnings or insights that impact future development.
+  - Implementation details that are not obvious from the code.
+  - Reasoning behind important technical decisions.
+
+### 5. **Handling Uncertainty or New Knowledge File Creation**
+- **Action (Uncertainty):** If any step in this protocol is unclear, or if a conflict arises during validation that requires user input, create a `question.md` file in the memory-bank directory with clear, concise questions.
+  ```markdown
+  # [Date] Knowledge Renewal Questions
+  - [ ] Question 1: [Brief description of uncertainty/conflict]
+  - [ ] Question 2: [Brief description of uncertainty/conflict]
+  ```
+  - **Then:** Wait for the user to provide answers. Once answered, integrate the new knowledge and delete `question.md`.
+- **Action (New Knowledge Files):** If a significant new area of knowledge emerges that warrants its own dedicated file within the memory-bank directory, inform the user first and await their decision before creating the new file.
+
+### 6. **Consistency Check**
+- **Action:** Ensure all memory bank files are consistent with each other.
+  - Check for conflicting information between files.
+  - Ensure terminology is used consistently across all files.
+  - Verify that cross-references between files are accurate.
+  - If conflicts are found, resolve them based on the most recent information or create a question.md file.
+
+### 7. **Diagram Updates**
+- **Action:** Review and update all diagrams to ensure they accurately reflect the current state of the project.
+  - Verify that architectural diagrams match the current system structure.
+  - Update workflow diagrams to reflect any process changes.
+  - Ensure component relationship diagrams are accurate.
+  - Add new diagrams if they would help clarify complex aspects of the project.
+  - Remove or archive diagrams that no longer represent the project accurately.
+
+---
+
+## AI Tool Execution & Reporting
+
+**When** this `renew-knowledge.mdc` protocol is invoked:
+1.  **Execution:** The AI tool/model **MUST** execute all steps outlined above.
+2.  **Output:** Upon completion, the AI **MUST** provide a concise summary of the renewal process, including:
+    - Confirmation that the knowledge renewal was performed.
+    - **Current project status:** Overall completion percentage and current phase
+    - **Code-documentation sync status:** Any updates made to align documentation with codebase
+    - **Diagram status:** Confirmation that diagrams have been reviewed and updated
+    - A brief report on any compaction or redundancy removal (e.g., "Removed X outdated entries," "Compacted Y similar notes").
+    - **Next session readiness:** Confirmation that a new AI session can understand and continue the project without re-explanation
+    - Confirmation that critical context was preserved.
+    - A statement regarding any `question.md` files created or resolved.
+    - **Key focus areas:** Highlight the most important areas for the next session to focus on.
+3.  **No Assumptions:** If a required memory bank file is missing or inaccessible, the AI **MUST** create `question.md` to ask for guidance rather than making assumptions.
+
+---
+
+## Example Commands
+**User prompts:**
+- `renew knowledge`
+- `I want to create new session or take a rest. I need you renew your knowledge.`
+- `Use the knowledge renewal protocol`
+- ```
+  I want to create new session or i want to take a rest.
+  I need you renew your knowledge.
+  Re-check existing knowledge with codes too.
+  If you can compacting the knowledge data, compacting it.
+  If there is any redundant information, re-check it.
+  Remove any redundant information if not used anymore on this project
+  But, make sure not delete knowledge that you need on next session,
+  i want you to understand this project from the ground up to its current state.
+  i don't want to explain this project idea, goal, progress and obstacle to next AI session.
+  i want next new session AI can understand that from the project knowledge documentation.
+  ```
+
+**Standard AI Response Format:**
+```
+✅ Knowledge renewal protocol executed.
+
+📊 **Current Project Status:** [Brief current status and completion percentage]
+🔄 **Code-Documentation Sync:** [Updates made to align documentation with codebase]
+📊 **Diagram Status:** [Confirmation of diagram updates]
+🗂️ **Knowledge Compaction:** [Summary of redundancy removal and compaction]
+🎯 **Next Session Readiness:** ✅ New AI session can understand project from ground up
+🛡️ **Critical Context:** All essential project information preserved
+❓ **Questions:** [Status of any questions flagged or resolved]
+🔍 **Key Focus Areas:** [Most important areas for next session to focus on]
+
+Ready for new session or continuation.
+```
