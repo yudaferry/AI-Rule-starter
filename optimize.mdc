@@ -60,6 +60,11 @@ Propose enhancements across all code aspects:
 *   **Testability**: Suggest improvements for unit and integration testing.
 *   **Scalability**: Identify bottlenecks and propose scalable solutions.
 
+## Smart Comments
+- Don't comment on what the code does - make the code self-documenting
+- Use comments to explain why something is done a certain way
+- Document APIs properly, complex algorithms, and non-obvious side effects
+
 ## Output & Implementation Guidelines
 
 ### Review Report Format
